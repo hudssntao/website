@@ -9,7 +9,7 @@ type PopupProps = {
 }
 
 export default function Popup({ hasSeenPopup }: PopupProps) {
-  const [isOpen, setIsOpen] = useState(hasSeenPopup);
+  const [isOpen, setIsOpen] = useState(!hasSeenPopup);
 
   const closePopup = () => {
     setIsOpen(false);
