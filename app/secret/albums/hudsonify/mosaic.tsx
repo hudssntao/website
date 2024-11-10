@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Card } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { cn } from "@/lib/utils";
+import Gallery from '../gallery';
 
 interface Image {
   id: string;
@@ -37,6 +37,7 @@ const ImageMosaic = ({
     message: 'Loading tile images...'
   });
   const [tileImageElements, setTileImageElements] = useState<Map<string, HTMLImageElement>>(new Map());
+  const [displayedImages, setDisplayedImages] = useState<Set<Image>>(new Set());
 
   // Preload all tile images with progress tracking
   useEffect(() => {
@@ -74,6 +75,7 @@ const ImageMosaic = ({
       }));
 
       setTileImageElements(imageMap);
+
     };
 
     loadTileImages();
@@ -158,6 +160,11 @@ const ImageMosaic = ({
         for (let x = 0; x < canvas.width; x += tileSize) {
           const avgColor = getAverageColor(ctx, x, y, tileSize, tileSize);
           const bestTile = findBestMatchingTile(avgColor);
+          setDisplayedImages(prev => {
+            const updated = new Set(prev);
+            updated.add(bestTile);
+            return updated;
+          })
           const tileImg = tileImageElements.get(bestTile.id);
 
           if (tileImg) {
@@ -203,19 +210,25 @@ const ImageMosaic = ({
   }, [mainImageSrc, tileSize, tileImageElements, gridSize]);
 
   return (
-    <Card className="p-4">
-      <div className="relative">
-        <div className="mb-4 space-y-2">
-          <Progress value={progress.percent} />
-          <div className="text-sm text-gray-600 text-center">
-            {progress.message}
-          </div>
+    <div className="flex flex-col gap-4 p-10 relative">
+      <div className="space-y-2">
+        <Progress value={progress.percent} />
+        <div className="text-sm text-gray-600 text-center">
+          {progress.message}
         </div>
-        <canvas
-          ref={canvasRef}
-          className={cn("max-w-full h-auto", progress.stage !== "complete" && "hidden")} />
       </div>
-    </Card>
+      <canvas
+        ref={canvasRef}
+        className={cn("max-w-full h-auto", progress.stage !== "complete" && "hidden")} />
+      {progress.stage === "complete" && (
+        <div className="flex flex-col w-full justify-center items-center">
+          <div className="text-2xl mt-10 font-semibold animate-pulse">
+            Images Used
+          </div>
+          <Gallery images={Array.from(displayedImages)} />
+        </div>
+      )}
+    </div>
   );
 };
 
