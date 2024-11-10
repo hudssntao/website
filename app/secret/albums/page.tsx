@@ -27,8 +27,6 @@ export default async function Page() {
     }
   })
 
-  console.log(images);
-
   const marqueeText = "Happy Birthday! -- You're finally legal! -- Wow she's 18!! -- Holy moley she getting old! -- Still cant legally drink!! -- You can vote... after this election!! -- The prettiest girl I know!! -- I'm running out of things to say!! -- Just scroll down at this point!! -- Why are you still reading this??? -- Please scroll! -- Happy birthday ok!? -- Now move on!!! -- "
 
   return (
@@ -54,6 +52,8 @@ export default async function Page() {
                 <Image
                   src={image.url}
                   alt={`Gallery image ${index + 1}`}
+                  width={1000}
+                  height={1000}
                   className="w-full h-full object-cover rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-blue-950 scale-105 rounded-lg bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out flex items-center justify-center cursor-pointer">
