@@ -27,6 +27,8 @@ export default async function Page() {
     }
   })
 
+  console.log(images);
+
   const marqueeText = "Happy Birthday! -- You're finally legal! -- Wow she's 18!! -- Holy moley she getting old! -- Still cant legally drink!! -- You can vote... after this election!! -- The prettiest girl I know!! -- I'm running out of things to say!! -- Just scroll down at this point!! -- Why are you still reading this??? -- Please scroll! -- Happy birthday ok!? -- Now move on!!! -- "
 
   return (
