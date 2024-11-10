@@ -23,8 +23,6 @@ export default async function Page() {
     },
   })
 
-  console.log(images);
-
   return (<>
     <div className="w-screen h-screen flex justify-center items-center bg-blue-950">
       <div className="absolute inset-0 top-10 left-10 text-white font-semibold cursor-pointer w-fit">
