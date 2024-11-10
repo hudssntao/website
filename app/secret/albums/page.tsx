@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
 import Popup from './_components/popup';
 import { ArrowLeft } from 'lucide-react';
+import Image from "next/image";
 
 export default async function Page() {
   const cookieStore = cookies();
@@ -29,7 +30,7 @@ export default async function Page() {
   const marqueeText = "Happy Birthday! -- You're finally legal! -- Wow she's 18!! -- Holy moley she getting old! -- Still cant legally drink!! -- You can vote... after this election!! -- The prettiest girl I know!! -- I'm running out of things to say!! -- Just scroll down at this point!! -- Why are you still reading this??? -- Please scroll! -- Happy birthday ok!? -- Now move on!!! -- "
 
   return (
-    <div className="flex flex-col min-h-screen bg-indigo-50">
+    <div className="flex flex-col min-h-screen bg-indigo-50 overflow-x-hidden">
       <div className="w-fit z-10 p-10">
         <div className="font-semibold cursor-pointer">
           <Link href="/" className="flex gap-1 items-center hover:text-gray-800 w-fit">
@@ -46,9 +47,9 @@ export default async function Page() {
       <div className="p-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {images.map((image, index) => (
-            <Link href={`/secret/albums/hudsonify?cnvt=${image.id}`}>
+            <Link key={image.id} href={`/secret/albums/hudsonify?cnvt=${image.id}`}>
               <div className="relative group aspect-square">
-                <img
+                <Image
                   src={image.url}
                   alt={`Gallery image ${index + 1}`}
                   className="w-full h-full object-cover rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-105"

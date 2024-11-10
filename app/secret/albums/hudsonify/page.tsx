@@ -29,7 +29,7 @@ export default async function Page({ searchParams }: { searchParams: { [key: str
   }).then(images => images.map(image => ({ ...image, id: image.id.toString(), averageColor: image.averageColor ?? "" })))
 
 
-  return (<div className="flex flex-col justify-center items-center min-h-screen bg-white">
+  return (<div className="flex flex-col justify-center items-center min-h-screen bg-white overflow-x-hidden">
     <div className="w-fit z-10 p-10">
       <div className="font-semibold cursor-pointer">
         <Link href="/secret/albums" className="flex gap-1 items-center hover:text-gray-800 w-fit">
