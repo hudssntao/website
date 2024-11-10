@@ -5,7 +5,7 @@ import * as path from 'path'
 import * as dotenv from 'dotenv'
 import convert from "heic-convert";
 import { readFile, writeFile } from 'fs/promises';
-
+import sharp from "sharp";
 
 dotenv.config()
 
@@ -85,9 +85,77 @@ async function uploadImages() {
   }
 }
 
-// Execute the upload
-uploadImages().catch((e) => {
-  console.error(e)
-  process.exit(1)
-})
+async function calculateAverageColor(imageUrl: string): Promise<string> {
+  try {
+    // Fetch the image and resize it to a smaller size for faster processing
+    const imageBuffer = await fetch(imageUrl).then(res => res.arrayBuffer());
 
+    // Resize to a small image since we just need the average color
+    const { data, info } = await sharp(imageBuffer)
+      .resize(50, 50, { fit: 'inside' })
+      .raw()
+      .toBuffer({ resolveWithObject: true });
+
+    let r = 0, g = 0, b = 0;
+    const pixelCount = info.width * info.height;
+
+    // Sharp provides raw pixel data in RGB format
+    for (let i = 0; i < data.length; i += 3) {
+      r += data[i];
+      g += data[i + 1];
+      b += data[i + 2];
+    }
+
+    const avgColor = `${Math.floor(r / pixelCount)},${Math.floor(g / pixelCount)},${Math.floor(b / pixelCount)}`;
+    return avgColor;
+  } catch (error) {
+    console.error('Error processing image:', error);
+    throw error;
+  }
+}
+
+// Function to process all images in your database
+async function processExistingImages() {
+  try {
+    // Get all images that don't have an averageColor yet
+    const images = await prisma.image.findMany({
+      where: {
+        averageColor: null,
+        role: "ALT",
+      }
+    });
+
+    console.log(`Processing ${images.length} images...`);
+
+    // Process images in batches to avoid memory issues
+    const batchSize = 10;
+    for (let i = 0; i < images.length; i += batchSize) {
+      const batch = images.slice(i, i + batchSize);
+
+      await Promise.all(batch.map(async (image) => {
+        try {
+          const averageColor = await calculateAverageColor(image.url);
+
+          await prisma.image.update({
+            where: { id: image.id },
+            data: { averageColor }
+          });
+
+          console.log(`Processed image ${image.id}: ${averageColor}`);
+        } catch (error) {
+          console.error(`Failed to process image ${image.id}:`, error);
+        }
+      }));
+    }
+
+    console.log('Finished processing images');
+  } catch (error) {
+    console.error('Error in batch processing:', error);
+  }
+}
+
+
+// Example usage for processing existing images
+processExistingImages()
+  .catch(console.error)
+  .finally(() => prisma.$disconnect());
