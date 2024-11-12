@@ -7,7 +7,7 @@ export default function Home() {
     <div className="w-full h-screen bg-rose-100 flex flex-col gap-6 justify-center items-center">
       <div className="flex flex-col items-center gap-4 text-3xl font-semibold text-center text-neutral-800">
         <div>Welcome!</div>
-        <div>You&apos;ve reached hudsontao.com</div>
+        <div>I&apos;m Hudson</div>
       </div>
       <div className="flex gap-2">
         <Link href="/resume">
