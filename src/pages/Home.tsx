@@ -12,9 +12,6 @@ export default function Home() {
         <Link to="/resume">
           <Button variant="outline">Resume</Button>
         </Link>
-        <Link to="/projects">
-          <Button variant="outline">Projects</Button>
-        </Link>
         <a href="https://github.com/hudssntao">
           <Button variant="outline">Github</Button>
         </a>

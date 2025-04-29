@@ -33,7 +33,6 @@
     }
   },
   "files": {
-    "include": ["**/*.{ts,tsx,js,jsx}"],
     "ignore": ["**/node_modules/**", "**/dist/**", "**/pnpm-lock.yaml"]
   }
 }
