@@ -5,12 +5,14 @@ import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <div className="w-full flex flex-col ustify-center items-center overflow-y-none">
-      <div className="w-full h-screen flex flex-col justify-center items-start p-5 select-none bg-gradient-to-br from-background via-background to-primary">
-        <div className="flex flex gap-2">
-          <div className="text-[15rem] font-bold">hudson</div>
-          <div className="text-[6rem] font-bold text-primary animate-pulse">tao</div>
+      <div className="w-full h-screen flex flex-col gap-4 xl:gap-0 justify-center items-start p-5 select-none bg-gradient-to-br from-background via-background to-primary">
+        <div className="flex flex-col md:flex-row gap-2 text-wrap">
+          <div className="text-7xl sm:text-9xl xl:text-[15rem] font-bold">hudson</div>
+          <div className="text-7xl sm:text-9xl md:text-6xl xl:text-[6rem] font-bold text-primary animate-pulse">
+            tao
+          </div>
         </div>
-        <div className="flex justify-center items-center gap-2 pl-5 animate-bounce text-primary">
+        <div className="flex justify-center items-center gap-2 md:pl-5 animate-bounce text-primary">
           scroll scroll scroll scroll
           <ArrowDown />
         </div>
