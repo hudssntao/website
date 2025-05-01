@@ -4,6 +4,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Blog from "./pages/blog/Blog";
+import BlogPost from "./pages/blog/BlogPost";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
