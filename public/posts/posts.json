@@ -1,14 +1,14 @@
 [
   {
-    "slug": "hello-world",
-    "title": "Hello World",
-    "date": "2024-07-25",
-    "excerpt": "My first blog post using markdown"
-  },
-  {
     "slug": "second-post",
     "title": "Getting Started with Web Development",
     "date": "2024-07-26",
     "excerpt": "A beginner's guide to web development"
+  },
+  {
+    "slug": "hello-world",
+    "title": "Hello World",
+    "date": "2024-07-25",
+    "excerpt": "My first blog post using markdown"
   }
 ]

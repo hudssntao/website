@@ -26,8 +26,8 @@ function greeting() {
 
 You can add images too! Like this:
 
-![Example Image](https://via.placeholder.com/150)
+![Example Image](https://live.staticflickr.com/3716/11704689944_6ccf5eeabd_b.jpg)
 
 ## Links
 
-And [links](https://example.com) as well! 
+And _[links](https://example.com)_ as well! 

@@ -35,7 +35,7 @@ export default function Blog() {
         </div>
       </div>
 
-      <div className="flex flex-col w-full h-screen justify-center items-center">
+      <div id="posts" className="flex flex-col w-full h-screen justify-center items-center">
         <h2 className="text-3xl font-bold mb-8">All Posts</h2>
 
         {loading ? (
@@ -48,7 +48,7 @@ export default function Blog() {
               <Link
                 key={post.slug}
                 to={`/blog/${post.slug}`}
-                className="block p-6 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+                className="block p-6 border border-gray-200 rounded-lg hover:bg-gray-50 hover:text-primary transition-colors"
               >
                 <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
                 <div className="flex items-center gap-2 text-gray-500 mb-3">

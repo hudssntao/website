@@ -28,27 +28,15 @@ export async function getAllPosts(): Promise<BlogPost[]> {
 // Fetch a single post by slug
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   try {
-    // Fetch the markdown file directly
-    const response = await fetch(`/posts/${slug}.md`);
+    const response = await fetch(`/api/posts/${slug}`);
 
     if (!response.ok) {
       return null;
     }
 
-    // Get the markdown content
-    const markdownContent = await response.text();
+    const post = await response.json();
 
-    // Parse frontmatter and content with gray-matter
-    const { data, content } = matter(markdownContent);
-
-    // Return the post data
-    return {
-      slug,
-      title: data.title,
-      date: data.date,
-      excerpt: data.excerpt || "",
-      content,
-    };
+    return post;
   } catch (error) {
     console.error("Error fetching post:", error);
     return null;

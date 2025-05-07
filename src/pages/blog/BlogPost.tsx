@@ -45,7 +45,7 @@ export default function BlogPost() {
     return (
       <div className="w-full min-h-screen flex flex-col justify-center items-center">
         <div className="text-xl mb-4">{error || "Post not found"}</div>
-        <Link to="/blog" className="flex gap-2 items-center text-primary">
+        <Link to="/blog#posts" className="flex gap-2 items-center text-primary">
           <ArrowLeft /> Back to blog
         </Link>
       </div>
@@ -56,7 +56,7 @@ export default function BlogPost() {
     <div className="w-full flex flex-col bg-background min-h-screen">
       <div className="w-full p-5 bg-gradient-to-r from-background to-primary/10">
         <div className="container mx-auto max-w-4xl">
-          <Link to="/blog" className="flex gap-2 items-center mb-6">
+          <Link to="/blog#posts" className="flex gap-2 items-center mb-6">
             <ArrowLeft /> Back to blog
           </Link>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">{post.title}</h1>
@@ -67,7 +67,7 @@ export default function BlogPost() {
         </div>
       </div>
 
-      <div className="container mx-auto p-5 py-8 max-w-4xl">
+      <div className="container mx-auto py-8 max-w-4xl">
         <article className="prose prose-lg max-w-none">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content || ""}</ReactMarkdown>
         </article>
