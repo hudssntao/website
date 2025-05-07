@@ -4,7 +4,7 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 import matter from "gray-matter";
 import type { BlogPost } from "../../src/lib/blog";
 
-export default function handler(req: VercelRequest, res: VercelResponse) {
+export default function handler(_req: VercelRequest, res: VercelResponse) {
   try {
     const postsDirectory = path.join(process.cwd(), "public/posts");
     const fileNames = fs.readdirSync(postsDirectory);
