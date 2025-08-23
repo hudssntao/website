@@ -1,5 +1,10 @@
 {
   "buildCommand": "pnpm build",
   "devCommand": "pnpm dev",
-  "installCommand": "pnpm install"
+  "installCommand": "pnpm install",
+  "functions": {
+    "api/**": {
+      "includeFiles": "public/posts/**"
+    }
+  }
 }
