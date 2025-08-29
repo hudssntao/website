@@ -26,7 +26,9 @@ export async function getAllPosts(): Promise<BlogPost[]> {
 // Fetch a single post by slug
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   try {
-    const response = await fetch(`/api/posts/${slug}`);
+    // Use the correct port for development
+    const baseUrl = window.location.hostname === 'localhost' ? 'http://localhost:3000' : '';
+    const response = await fetch(`${baseUrl}/api/posts/${slug}`);
 
     if (!response.ok) {
       return null;

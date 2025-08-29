@@ -4,6 +4,7 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 import matter from "gray-matter";
 
 export default function handler(req: VercelRequest, res: VercelResponse) {
+
   const { slug } = req.query;
 
   if (!slug || Array.isArray(slug)) {
