@@ -2,7 +2,14 @@ import fs from "node:fs";
 import path from "node:path";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import matter from "gray-matter";
-import type { BlogPost } from "../../src/lib/blog";
+
+interface BlogPost {
+  slug: string;
+  title: string;
+  date: string;
+  excerpt: string;
+  content?: string;
+}
 
 export default function handler(_req: VercelRequest, res: VercelResponse) {
   try {
