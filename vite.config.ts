@@ -13,4 +13,12 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  vercel: {
+    rewrites: [
+      {
+        source: '/((?!api).*)',
+        destination: '/index.html',
+      },
+    ],
+  },
 });

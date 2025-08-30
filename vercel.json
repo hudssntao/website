@@ -5,11 +5,5 @@
     "api/**": {
       "includeFiles": "public/posts/**"
     }
-  },
-  "rewrites": [
-    {
-      "source": "/((?!api).*)",
-      "destination": "/index.html"
-    }
-  ]
+  }
 }
