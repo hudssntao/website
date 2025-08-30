@@ -2,7 +2,7 @@ import { ArrowLeft, Calendar } from "lucide-react";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { Link, useParams } from "react-router-dom";
-import remarkGfm from "remark-gfm";
+import remarkBreaks from "remark-breaks";
 import { type BlogPost as BlogPostType, getPostBySlug } from "../../lib/blog";
 
 export default function BlogPost() {
@@ -69,7 +69,9 @@ export default function BlogPost() {
 
       <div className="container mx-auto py-8 max-w-4xl">
         <article className="prose prose-lg max-w-none">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content || ""}</ReactMarkdown>
+          <ReactMarkdown remarkPlugins={[remarkBreaks]}>
+            {post?.content?.replace(/\n/gi, "\n &nbsp; \n") || ""}
+          </ReactMarkdown>
         </article>
       </div>
     </div>

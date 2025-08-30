@@ -1,14 +1,8 @@
 [
   {
-    "slug": "second-post",
-    "title": "Getting Started with Web Development",
-    "date": "2024-07-26",
-    "excerpt": "A beginner's guide to web development"
-  },
-  {
-    "slug": "hello-world",
-    "title": "Hello World",
-    "date": "2024-07-25",
-    "excerpt": "My first blog post using markdown"
+    "slug": "why-dont-people-get-product-discovery",
+    "title": "Why Don't People Get Product Discovery?",
+    "date": "2025-08-29",
+    "excerpt": "People just don't get it (at least not the first time)."
   }
 ]
