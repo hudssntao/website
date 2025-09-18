@@ -1,14 +1,5 @@
 import { cn } from "@/lib/utils";
-import {
-  DndContext,
-  DragOverlay,
-  MouseSensor,
-  TouchSensor,
-  useDraggable,
-  useDroppable,
-  useSensor,
-  useSensors,
-} from "@dnd-kit/core";
+import { DndContext, DragOverlay, useDraggable, useDroppable } from "@dnd-kit/core";
 import type { DragEndEvent, DragStartEvent } from "@dnd-kit/core";
 import { ArrowLeft } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -37,7 +28,13 @@ function MedicineCard({
   isDragging = false,
   isIncorrect = false,
 }: { medicine: Medicine; isDragging?: boolean; isIncorrect?: boolean }) {
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    isDragging: isBeingDragged,
+  } = useDraggable({
     id: medicine.medicine,
     data: medicine,
   });
@@ -45,6 +42,7 @@ function MedicineCard({
   const style = transform
     ? {
         transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+        zIndex: 1000,
       }
     : undefined;
 
@@ -55,12 +53,14 @@ function MedicineCard({
       {...listeners}
       {...attributes}
       className={cn(
-        "bg-card border-2 border-border rounded-lg p-3 cursor-grab active:cursor-grabbing shadow-md hover:shadow-lg transition-all duration-300 text-card-foreground",
-        isDragging && "opacity-50 rotate-3",
-        isIncorrect && "animate-bounce border-red-500 bg-red-50"
+        "bg-card border-2 border-border rounded-lg p-3 cursor-grab active:cursor-grabbing shadow-md hover:shadow-lg text-card-foreground select-none touch-none",
+        isDragging && "opacity-50 rotate-3 scale-105",
+        isBeingDragged && "opacity-0", // Hide the original when being dragged
+        isIncorrect && "animate-bounce border-red-500 bg-red-50",
+        !isDragging && !isBeingDragged && "transition-all duration-200"
       )}
     >
-      <div className="font-semibold text-sm">{medicine.medicine}</div>
+      <div className="font-semibold text-sm pointer-events-none">{medicine.medicine}</div>
     </div>
   );
 }
@@ -175,26 +175,18 @@ export default function Matching() {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [incorrectDrop, setIncorrectDrop] = useState<string | null>(null);
 
-  // Configure sensors for both mouse and touch support
-  const mouseSensor = useSensor(MouseSensor, {
-    // Require the mouse to move by 10 pixels before activating
-    activationConstraint: {
-      distance: 10,
-    },
-  });
-
-  const touchSensor = useSensor(TouchSensor, {
-    // Press delay of 250ms, with tolerance of 5px of movement
-    activationConstraint: {
-      delay: 250,
-      tolerance: 5,
-    },
-  });
-
-  const sensors = useSensors(mouseSensor, touchSensor);
-
   const handleBack = () => {
     navigate(-1);
+  };
+
+  // Function to shuffle an array
+  const shuffleArray = <T,>(array: T[]): T[] => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
   };
 
   useEffect(() => {
@@ -218,7 +210,10 @@ export default function Matching() {
 
         console.log("Parsed medicines:", parsedMedicines.slice(0, 5)); // Debug log
         console.log("Total medicines loaded:", parsedMedicines.length); // Debug log
-        setAvailableMedicines(parsedMedicines);
+
+        // Shuffle the medicines before setting them
+        const shuffledMedicines = shuffleArray(parsedMedicines);
+        setAvailableMedicines(shuffledMedicines);
 
         // Initialize class structures
         const structures: { [className: string]: ClassStructure } = {};
@@ -316,7 +311,7 @@ export default function Matching() {
     : null;
 
   return (
-    <DndContext sensors={sensors} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+    <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
       <div className="min-h-screen bg-background flex flex-col">
         {/* Navigation Header */}
         <div className="flex items-center justify-between p-4 border-b border-border">
@@ -372,7 +367,12 @@ export default function Matching() {
         </div>
       </div>
 
-      <DragOverlay>
+      <DragOverlay
+        style={{
+          cursor: "grabbing",
+        }}
+        dropAnimation={null}
+      >
         {activeMedicine && <MedicineCard medicine={activeMedicine} isDragging />}
       </DragOverlay>
     </DndContext>
