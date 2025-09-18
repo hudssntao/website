@@ -38,6 +38,9 @@ export default function Home() {
               <Link to="/trails">
                 <Button variant="outline">Trails</Button>
               </Link>
+              <Link to="/matching">
+                <Button variant="outline">Matching</Button>
+              </Link>
             </div>
           </div>
         </div>

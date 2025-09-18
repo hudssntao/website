@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Blog from "./pages/blog/Blog";
 import BlogPost from "./pages/blog/BlogPost";
+import Matching from "./pages/matching/Matching";
 import TrailTracker from "./pages/trails/TrailTracker";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/trails" element={<TrailTracker />} />
+          <Route path="/matching" element={<Matching />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>

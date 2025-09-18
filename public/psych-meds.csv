@@ -1,0 +1,51 @@
+medicine,prototype,class
+Amitriptyline,Cyclic antidepressants (TCA),Antidepressants
+Imipramine,Cyclic antidepressants (TCA),Antidepressants
+Phenelzine,Monoamine Oxidase Inhibitor (MAOI),Antidepressants
+Selegiline,Monoamine Oxidase Inhibitor (MAOI),Antidepressants
+Fluoxetine,Selective Serotonin Reuptake Inhibitor (SSRI),Antidepressants
+Sertraline,Selective Serotonin Reuptake Inhibitor (SSRI),Antidepressants
+Paroxetine,Selective Serotonin Reuptake Inhibitor (SSRI),Antidepressants
+Escitalopram,Selective Serotonin Reuptake Inhibitor (SSRI),Antidepressants
+Citalopram,Selective Serotonin Reuptake Inhibitor (SSRI),Antidepressants
+Duloxetine,Atypical,Antidepressants
+Venlafaxine,Atypical,Antidepressants
+Bupropion,Atypical,Antidepressants
+Mirtazapine,Atypical,Antidepressants
+Trazadone,Atypical,Antidepressants
+Alprazolam,Benzodiazepines,Anxiolytics
+Lorazepam,Benzodiazepines,Anxiolytics
+Chlordiazepoxide,Benzodiazepines,Anxiolytics
+Clonazepam,Benzodiazepines,Anxiolytics
+Diazepam,Benzodiazepines,Anxiolytics
+Buspirone,Non-Benzodiazepines,Anxiolytics
+Propranolol,Beta-blocker,Anxiolytics
+Lithium,Lithium,Mood stabilizer
+Carbamazepine,Anticonvulsants used as Mood Stabilizer,Mood stabilizer
+Divalproex,Anticonvulsants used as Mood Stabilizer,Mood stabilizer
+Lamotrigine,Anticonvulsants used as Mood Stabilizer,Mood stabilizer
+Topiramate,Anticonvulsants used as Mood Stabilizer,Mood stabilizer
+Disulfiram,Alcohol,Mood stabilizer
+Acamprosate,Alcohol,Mood stabilizer
+Naltrexone,Alcohol,Mood stabilizer
+Barbiturates,Alcohol,Mood stabilizer
+Vitamins,Alcohol,Mood stabilizer
+Modafinil,Stimulant,Mood stabilizer
+Methadone,Opioids,Mood stabilizer
+Naltrexone,Opioids,Mood stabilizer
+Suboxone,Opioids,Mood stabilizer
+Naloxone,Opioids,Mood stabilizer
+Benztropine,,Anticholinergic
+Diphenhydramine,,Anticholinergic
+Chlorpromazine,,Antipsychotics
+Fluphenazine,,Antipsychotics
+Haloperidol,,Antipsychotics
+Clozapine,,Antipsychotics
+Risperidone,,Antipsychotics
+Aripiprazole,,Antipsychotics
+Quetiapine,,Antipsychotics
+Ziprasidone,,Antipsychotics
+Donepezil,,Anticholinesterase & Acetylcholinesterase
+Rivastigmine,,Anticholinesterase & Acetylcholinesterase
+Memantine,,Anticholinesterase & Acetylcholinesterase
+Galantamine,,Anticholinesterase & Acetylcholinesterase
