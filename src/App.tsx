@@ -3,9 +3,9 @@ import Layout from "./Layout";
 import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
-import TrailTracker from "./pages/TrailTracker";
 import Blog from "./pages/blog/Blog";
 import BlogPost from "./pages/blog/BlogPost";
+import TrailTracker from "./pages/trails/TrailTracker";
 
 function App() {
   return (

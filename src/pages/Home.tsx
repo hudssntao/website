@@ -22,16 +22,23 @@ export default function Home() {
           <div className="flex justify-center items-center gap-2 font-bold text-primary">
             click click click <MousePointerClick />
           </div>
-          <div className="flex gap-4">
-            <Link to="/blog">
-              <Button variant="outline">Blog</Button>
-            </Link>
-            <a href="https://www.linkedin.com/in/hudson-tao-194ab3290">
-              <Button variant="outline">LinkedIn</Button>
-            </a>
-            <a href="https://github.com/hudssntao">
-              <Button variant="outline">Github</Button>
-            </a>
+          <div className="flex flex-col gap-4 justify-center items-center">
+            <div className="flex gap-4">
+              <Link to="/blog">
+                <Button variant="outline">Blog</Button>
+              </Link>
+              <a href="https://www.linkedin.com/in/hudson-tao-194ab3290">
+                <Button variant="outline">LinkedIn</Button>
+              </a>
+              <a href="https://github.com/hudssntao">
+                <Button variant="outline">Github</Button>
+              </a>
+            </div>
+            <div className="flex gap-4">
+              <Link to="/trails">
+                <Button variant="outline">Trails</Button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
