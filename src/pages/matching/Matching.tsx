@@ -10,7 +10,9 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import type { DragEndEvent, DragStartEvent } from "@dnd-kit/core";
+import { ArrowLeft } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface Medicine {
   medicine: string;
@@ -165,6 +167,7 @@ function checkMedicineAlreadyExists(
 }
 
 export default function Matching() {
+  const navigate = useNavigate();
   const [availableMedicines, setAvailableMedicines] = useState<Medicine[]>([]);
   const [classStructures, setClassStructures] = useState<{ [className: string]: ClassStructure }>(
     {}
@@ -189,6 +192,10 @@ export default function Matching() {
   });
 
   const sensors = useSensors(mouseSensor, touchSensor);
+
+  const handleBack = () => {
+    navigate(-1);
+  };
 
   useEffect(() => {
     // Load CSV data
@@ -311,6 +318,19 @@ export default function Matching() {
   return (
     <DndContext sensors={sensors} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
       <div className="min-h-screen bg-background flex flex-col">
+        {/* Navigation Header */}
+        <div className="flex items-center justify-between p-4 border-b border-border">
+          <button
+            type="button"
+            onClick={handleBack}
+            className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
+            aria-label="Go back"
+          >
+            <ArrowLeft size={20} />
+            Back
+          </button>
+        </div>
+
         <div className="flex-1 p-6 pb-0">
           <div className="max-w-7xl mx-auto">
             <h1 className="text-3xl font-bold text-center mb-8 text-foreground">
