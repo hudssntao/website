@@ -3,6 +3,7 @@ import Layout from "./Layout";
 import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+import Resume from "./pages/Resume";
 import Blog from "./pages/blog/Blog";
 import BlogPost from "./pages/blog/BlogPost";
 import Matching from "./pages/matching/Matching";
@@ -19,6 +20,7 @@ function App() {
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/trails" element={<TrailTracker />} />
           <Route path="/matching" element={<Matching />} />
+          <Route path="/resume" element={<Resume />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>

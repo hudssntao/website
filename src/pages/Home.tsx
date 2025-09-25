@@ -41,6 +41,9 @@ export default function Home() {
               <Link to="/matching">
                 <Button variant="outline">Matching</Button>
               </Link>
+              <Link to="/resume">
+                <Button variant="outline">Resume</Button>
+              </Link>
             </div>
           </div>
         </div>
