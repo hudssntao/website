@@ -24,8 +24,8 @@ export default function Home() {
           </div>
           <div className="flex flex-col gap-4 justify-center items-center">
             <div className="flex gap-4">
-              <Link to="/blog">
-                <Button variant="outline">Blog</Button>
+              <Link to="/resume">
+                <Button variant="outline">Resume</Button>
               </Link>
               <a href="https://www.linkedin.com/in/hudson-tao-194ab3290">
                 <Button variant="outline">LinkedIn</Button>
@@ -41,8 +41,8 @@ export default function Home() {
               <Link to="/matching">
                 <Button variant="outline">Matching</Button>
               </Link>
-              <Link to="/resume">
-                <Button variant="outline">Resume</Button>
+              <Link to="/blog">
+                <Button variant="outline">Blog</Button>
               </Link>
             </div>
           </div>
