@@ -7,8 +7,8 @@ import Resume from "./pages/Resume";
 import Blog from "./pages/blog/Blog";
 import BlogPost from "./pages/blog/BlogPost";
 import Matching from "./pages/matching/Matching";
+import CheatSheets from "./pages/sheets/page";
 import TrailTracker from "./pages/trails/TrailTracker";
-import CheatSheets from "./pages/cheat-sheets/page";
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
           <Route path="/trails" element={<TrailTracker />} />
           <Route path="/matching" element={<Matching />} />
           <Route path="/resume" element={<Resume />} />
-          <Route path="/cheat-sheets" element={<CheatSheets />} />
+          <Route path="/sheets" element={<CheatSheets />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
